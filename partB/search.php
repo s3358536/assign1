@@ -1,3 +1,10 @@
+<?php
+  require_once('dbConnection.php');
+  $regions = getRegion();
+  $grapeVarieties = getGrapeVariety();
+  $wineYearMinMax = getWineYearMinMax();
+?>
+
 <?php include "header.php"; ?>
   <form id="search-form" action="searchResult.php" method="get">
     <h1>Wine Search</h1>
@@ -14,28 +21,44 @@
         <td>Region</td>
         <td>
           <select name="region">
-            <option value="region1">region1</option>
+            <?php
+              foreach ($regions as $region) {
+                echo "<option value=\"".$region[0]."\">".$region[0]."</option>";
+              }
+            ?>
           </select>
         </td>
       </tr>
       <tr>
         <td>Grape variety</td>
         <td>
-          <select name="region">
-            <option value="variety1">variety1</option>
+          <select name="grapeVariety">
+            <?php
+              foreach ($grapeVarieties as $grapeVariety) {
+                echo "<option value=\"".$grapeVariety[0]."\">".$grapeVariety[0]."</option>";
+              }
+            ?>
           </select>
         </td>
       </tr>
       <tr>
         <td>Year Range</td>
         <td>
-          From
+          from
           <select name="yearFrom">
-            <option value="1">1</option>
+            <?php
+              for ($i=$wineYearMinMax[0];$i<=$wineYearMinMax[1];$i++) {
+                echo "<option value=\"".$i."\">".$i."</option>";
+              }
+            ?>
           </select>
-          To
+          to
           <select name="yearTo">
-            <option value="1">1</option>
+            <?php
+              for ($i=$wineYearMinMax[0];$i<=$wineYearMinMax[1];$i++) {
+                echo "<option value=\"".$i."\">".$i."</option>";
+              }
+            ?>
           </select>
         </td>
       </tr>

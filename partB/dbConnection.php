@@ -14,8 +14,12 @@
     return $dbconn;
   }
 
+  function closeDB($dbconn) {
+    mysql_close($dbconn);
+  }
+
   function searchAllWine() {
-    connectDB();
+    $conn = connectDB();
     $sql = "SELECT w.wine_name, gv.variety, w.year, wy.winery_name, r.region_name, inv.cost, inv.on_hand, ";
     $sql = $sql . "IFNULL(i.sold, 0) AS sold, IFNULL(i.rev, 0) AS rev ";
     $sql = $sql . "FROM wine w, wine_variety wv, grape_variety gv, winery wy, region r, inventory inv LEFT OUTER JOIN ";
@@ -31,6 +35,41 @@
     while ($row = @mysql_fetch_row($result)) {
       $records[] = $row;
     }
+    closeDB($conn);
+    return $records;
+  }
+  
+  function getRegion() {
+    $conn = connectDB();
+    $sql = "SELECT region_name FROM region ORDER BY region_name;";
+    $result = @mysql_query($sql);
+    while ($row = @mysql_fetch_row($result)) {
+      $records[] = $row;
+    }
+    closeDB($conn);
+    return $records;
+  }
+   
+  function getGrapeVariety() {
+    $conn = connectDB();
+    $sql = "SELECT variety FROM grape_variety ORDER BY variety;";
+    $result = @mysql_query($sql);
+    while ($row = @mysql_fetch_row($result)) {
+      $records[] = $row;
+    }
+    closeDB($conn);
+    return $records;
+  }
+  
+  function getWineYearMinMax() {
+    $conn = connectDB();
+    $sql = "SELECT MIN(year), MAX(year) FROM wine;";
+    $result = @mysql_query($sql);
+    while ($row = @mysql_fetch_row($result)) {
+      $records[] = $row[0];
+      $records[] = $row[1];
+    }
+    closeDB($conn);
     return $records;
   }
 ?>
