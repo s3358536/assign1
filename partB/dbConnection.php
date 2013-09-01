@@ -28,7 +28,9 @@
     $sql = $sql . "AND w.wine_id = inv.wine_id ";
     $sql = $sql . "ORDER BY w.wine_name, gv.variety, w.year, wy.winery_name, r.region_name;";
     $result = @mysql_query($sql);
-    while ($records[] = @mysql_fetch_row($result));
+    while ($row = @mysql_fetch_row($result)) {
+      $records[] = $row;
+    }
     return $records;
   }
 ?>
