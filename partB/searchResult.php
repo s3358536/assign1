@@ -9,15 +9,15 @@
   echo "<h1>Search Result</h1>";
   echo "<table border=\"1\">";
   echo "<tr>";
-  echo "<th>Wine Name</td>";
-  echo "<th>Grape Variety</td>";
-  echo "<th>Year</td>";
-  echo "<th>Winery</td>";
-  echo "<th>Region</td>";
-  echo "<th>Cost</td>";
-  echo "<th>Available</td>";
-  echo "<th>Sold</td>";
-  echo "<th>Sales Revenue</td>";
+  echo "<th>Wine Name</th>";
+  echo "<th>Grape Variety</th>";
+  echo "<th>Year</th>";
+  echo "<th>Winery</th>";
+  echo "<th>Region</th>";
+  echo "<th>Cost</th>";
+  echo "<th>Available</th>";
+  echo "<th>Sold</th>";
+  echo "<th>Sales Revenue</th>";
   echo "</tr>";
   foreach ($result as $record) {
     echo "<tr>";
