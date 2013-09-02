@@ -4,6 +4,8 @@
 
 <?php include "header.php" ?>
 
+<?php include "search.php" ?>
+
 <?php
   $result = searchAllWine();
   echo "<h1>Search Result</h1>";
