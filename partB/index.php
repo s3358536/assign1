@@ -1,5 +1,5 @@
 <?php
   include "header.php";
-  include "search.php";
+  include "search_partial.php";
   include "footer.php";
 ?>

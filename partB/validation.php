@@ -27,8 +27,12 @@
     return "";
   }
 
-  function compareMinMax($min, $max, $minName, $maxName) {
-    if ($min > $max) {
+  function validateRange($min, $max, $minName, $maxName) {
+    if ($min == "" && $max != "") {
+      return "<div class=\"error\">".$minName." is required.</div>";
+    } else if ($min != "" && $max == "") {
+      return "<div class=\"error\">".$maxName." is required.</div>";
+    } else if ($min > $max) {
       return "<div class=\"error\">".$maxName." should be greater than or equal to ".$minName.".</div>";
     }
     return "";
