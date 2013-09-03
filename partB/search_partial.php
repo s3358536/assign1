@@ -82,6 +82,9 @@
   if (isset($_GET['maxCost']) && $_GET['maxCost'] != "") {
     $maxCost = $_GET['maxCost'];
     $errMaxCost = validateDecimalNum($_GET['maxCost'], 2, 0, 999999);
+    if ($errMaxCost == "" && isset($_GET['minCost']) && $_GET['minCost'] != "") {
+      $errMaxCost = validateRange($_GET['minCost'],$_GET['maxCost'], "Min. Cost", "Max. Cost");
+    }
     if ($errMaxCost == "" && $condition != -1) {
       $condition = addMaxCostCondition($_GET['maxCost'], $condition);
     } else {
@@ -187,17 +190,17 @@
       </td>
     </tr>
     <tr>
-      <td>Cost (Max.)</td>
-      <td>
-        <input type="text" name="maxCost" value="<?php echo $_GET['maxCost']; ?>" />
-        <?php echo $errMaxCost; ?>
-      </td>
-    </tr>
-    <tr>
       <td>Cost (Min.)</td>
       <td>
         <input type="text" name="minCost" value="<?php echo $_GET['minCost']; ?>" />
         <?php echo $errMinCost; ?>
+      </td>
+    </tr>
+    <tr>
+      <td>Cost (Max.)</td>
+      <td>
+        <input type="text" name="maxCost" value="<?php echo $_GET['maxCost']; ?>" />
+        <?php echo $errMaxCost; ?>
       </td>
     </tr>
     <tr>
