@@ -4,5 +4,7 @@
   <head>
     <title>WDA Assignment 1</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
   </head>
   <body>
+    <div class="main">
