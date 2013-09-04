@@ -45,8 +45,8 @@ function generateSearchForm() {
     }
   }
   foreach ($regions as $region) {
-    $t->setVariable("region", $region[0]);
-    if ($region[0] == $selectedRegion) {
+    $t->setVariable("region", $region);
+    if ($region == $selectedRegion) {
       $t->addBlock("regionOptionSelected");
     } else {
       $t->addBlock("regionOption");
@@ -63,8 +63,8 @@ function generateSearchForm() {
     }
   }
   foreach ($grapeVarieties as $grapeVariety) {
-    $t->setVariable("grapeVariety", $grapeVariety[0]);
-    if ($grapeVariety[0] == $selectedGrapeVariety) {
+    $t->setVariable("grapeVariety", $grapeVariety);
+    if ($grapeVariety == $selectedGrapeVariety) {
       $t->addBlock("grapeVarietyOptionSelected");
     } else {
       $t->addBlock("grapeVarietyOption");

@@ -2,20 +2,17 @@
   require_once('db.php');
 
   function connectDB() {
-    if (!$dbconn = @mysql_connect(DB_HOST, DB_USER, DB_PW)) {
-      echo "Could not connect to mysql on " . DB_HOST . "\n";
-      exit;
-    }
-    if (!@mysql_select_db(DB_NAME, $dbconn)) {
-      echo "Could not access database " . DB_NAME . "\n";
-      echo mysql_error() . "\n";
-      exit;
+    try {
+      $dsn = DB_ENGINE.':host='.DB_HOST.';dbname='.DB_NAME;
+      $dbconn = new PDO($dsn, DB_USER, DB_PW);
+    } catch (PDOException $e) {
+      echo $e->getMessage();
     }
     return $dbconn;
   }
 
   function closeDB($dbconn) {
-    mysql_close($dbconn);
+    $dbconn = null;
   }
 
   function searchWine($condition) {
@@ -32,9 +29,22 @@
     $sql = $sql . $condition;
     $sql = $sql . "GROUP BY w.wine_id ";
     $sql = $sql . "ORDER BY w.wine_name, gv.variety, w.year, wy.winery_name, r.region_name;";    
-    $result = @mysql_query($sql);
-    while ($row = @mysql_fetch_row($result)) {
-      $records[] = $row;
+    try {
+      foreach ($conn->query($sql) as $row) {
+        $record = null;
+        $record[] = $row['wine_name'];
+        $record[] = $row['grape_varieties'];
+        $record[] = $row['year'];
+        $record[] = $row['winery_name'];
+        $record[] = $row['region_name'];
+        $record[] = $row['cost'];
+        $record[] = $row['on_hand'];
+        $record[] = $row['sold'];
+        $record[] = $row['rev'];
+        $records[] = $record;
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
     }
     closeDB($conn);
     return $records;
@@ -88,9 +98,12 @@
   function getRegion() {
     $conn = connectDB();
     $sql = "SELECT region_name FROM region ORDER BY region_name;";
-    $result = @mysql_query($sql);
-    while ($row = @mysql_fetch_row($result)) {
-      $records[] = $row;
+    try {
+      foreach ($conn->query($sql) as $row) {
+        $records[] = $row['region_name'];
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
     }
     closeDB($conn);
     return $records;
@@ -99,9 +112,12 @@
   function getGrapeVariety() {
     $conn = connectDB();
     $sql = "SELECT variety FROM grape_variety ORDER BY variety;";
-    $result = @mysql_query($sql);
-    while ($row = @mysql_fetch_row($result)) {
-      $records[] = $row;
+    try {
+      foreach ($conn->query($sql) as $row) {
+        $records[] = $row['variety'];
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
     }
     closeDB($conn);
     return $records;
@@ -109,11 +125,14 @@
   
   function getWineYearMinMax() {
     $conn = connectDB();
-    $sql = "SELECT MIN(year), MAX(year) FROM wine;";
-    $result = @mysql_query($sql);
-    while ($row = @mysql_fetch_row($result)) {
-      $records[] = $row[0];
-      $records[] = $row[1];
+    $sql = "SELECT MIN(year) AS min, MAX(year) AS max FROM wine;";
+    try {
+      foreach ($conn->query($sql) as $row) {
+        $records[] = $row['min'];
+        $records[] = $row['max'];
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
     }
     closeDB($conn);
     return $records;
