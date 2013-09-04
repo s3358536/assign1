@@ -1,0 +1,20 @@
+body {
+  background-color: #f6f6f6;
+  color: #696969;
+  font: 13px/19px Arial, Helvetica, sans-serif;
+}
+
+.error {
+  color: #ff0000;
+}
+
+.main {
+  background-color: #EEF4F7;
+  width: 800px;
+  margin: auto;
+}
+
+.footer {
+  clear: both;
+  text-align: center;
+}

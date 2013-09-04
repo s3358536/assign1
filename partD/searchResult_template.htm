@@ -1,0 +1,37 @@
+
+<!-- $Include header.php -->
+
+<!-- $BeginBlock search -->
+<?php include "search_partial.php" ?>
+<!-- $EndBlock search -->
+
+<!-- $BeginBlock resultLayout -->
+<h1>Search Result</h1>
+<table border="1">
+  <tr>
+    <th>Wine Name</th>
+    <th>Grape Varieties</th>
+    <th>Year</th>
+    <th>Winery</th>
+    <th>Region</th>
+    <th>Cost</th>
+    <th>Available</th>
+    <th>Sold</th>
+    <th>Sales Revenue</th>
+  </tr>
+  
+  <!-- $BeginBlock resultNoRow -->
+  <tr><td colspan="9">No record is found.</td></tr>
+  <!-- $EndBlock resultNoRow -->
+  
+  <!-- $BeginBlock resultRow -->
+  <tr>
+    <!-- $BeginBlock resultCol -->
+    <td>${field}</td>
+    <!-- $EndBlock resultCol -->
+  </tr>
+  <!-- $EndBlock resultRow -->
+</table>
+<!-- $EndBlock resultLayout -->
+
+<!-- $Include footer.php -->
