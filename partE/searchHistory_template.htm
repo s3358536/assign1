@@ -1,0 +1,27 @@
+
+<!-- $Include header.php -->
+
+<!-- $BeginBlock resultLayout -->
+<h1>Search Result</h1>
+<a href="${urlBackPage}">Back Page</a>
+<table border="1">
+  <tr>
+    <th>Search Time</th>
+    <th>Wine Name</th>
+  </tr>
+  
+  <!-- $BeginBlock resultNoRow -->
+  <tr><td colspan="2">No record is found.</td></tr>
+  <!-- $EndBlock resultNoRow -->
+  
+  <!-- $BeginBlock resultRow -->
+  <tr>
+    <!-- $BeginBlock resultCol -->
+    <td>${field}</td>
+    <!-- $EndBlock resultCol -->
+  </tr>
+  <!-- $EndBlock resultRow -->
+</table>
+<!-- $EndBlock resultLayout -->
+
+<!-- $Include footer.php -->

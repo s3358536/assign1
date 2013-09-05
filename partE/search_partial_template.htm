@@ -1,0 +1,114 @@
+<!-- $Include header.php --> 
+
+<form id="search-form" action="searchResult.php" method="get">
+  <h1>Wine Search</h1>
+  <!-- $BeginBlock startSession -->
+  <a href="${urlStartSession}">Start Session</a>
+  <!-- $EndBlock startSession -->
+  <!-- $BeginBlock EndSession -->
+  <a href="${urlEndSession}">End Session</a>
+  <a href="${urlSearchHistory}">Search History</a>
+  <!-- $EndBlock EndSession -->
+  <table border="1">
+    <tr>
+      <td>Wine Name</td>
+      <td>
+        <input type="text" name="wineName" value="${wineName}" />
+        ${errWineName}
+      </td>
+    </tr>
+    <tr>
+      <td>Winery Name</td>
+      <td>
+        <input type="text" name="wineryName" value="${wineryName}" />
+        ${errWineryName}
+      </td>
+    </tr>
+    <tr>
+      <td>Region</td>
+      <td>
+        <select name="region">
+          <!-- $BeginBlock regionOption -->
+            <option value="${region}">${region}</option>
+          <!-- $EndBlock regionOption -->
+          <!-- $BeginBlock regionOptionSelected -->
+            <option value="${region}" selected="selected">${region}</option>
+          <!-- $EndBlock regionOptionSelected -->
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Grape variety</td>
+      <td>
+        <select name="grapeVariety">
+          <option value="All">All</option>
+          <!-- $BeginBlock grapeVarietyOption -->
+            <option value="${grapeVariety}">${grapeVariety}</option>
+          <!-- $EndBlock grapeVarietyOption -->
+          <!-- $BeginBlock grapeVarietyOptionSelected -->
+            <option value="${grapeVariety}" selected="selected">${grapeVariety}</option>
+          <!-- $EndBlock grapeVarietyOptionSelected -->
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Year Range</td>
+      <td>
+        from
+        <select name="yearFrom">
+          <option value=""></option>
+          <!-- $BeginBlock yearFromOption -->
+            <option value="${yearFrom}">${yearFrom}</option>
+          <!-- $EndBlock yearFromOption -->
+          <!-- $BeginBlock yearFromOptionSelected -->
+            <option value="${yearFrom}" selected="selected">${yearFrom}</option>
+          <!-- $EndBlock yearFromOptionSelected -->
+        </select>
+        to
+        <select name="yearTo">
+          <option value=""></option>
+          <!-- $BeginBlock yearToOption -->
+            <option value="${yearTo}">${yearTo}</option>
+          <!-- $EndBlock yearToOption -->
+          <!-- $BeginBlock yearToOptionSelected -->
+            <option value="${yearTo}" selected="selected">${yearTo}</option>
+          <!-- $EndBlock yearToOptionSelected -->
+        </select>
+        ${errYearRange}
+      </td>
+    </tr>
+    <tr>
+      <td>In stock (Min.)</td>
+      <td>
+        <input type="text" name="minInStock" value="${minInStock}" />
+        ${errMinInStock}
+      </td>
+    </tr>
+    <tr>
+      <td>Ordered (Min.)</td>
+      <td>
+        <input type="text" name="minOrdered" value="${minOrdered}" />
+        ${errMinOrdered}
+      </td>
+    </tr>
+    <tr>
+      <td>Cost (Min.)</td>
+      <td>
+        <input type="text" name="minCost" value="${minCost}" />
+        ${errMinCost}
+      </td>
+    </tr>
+    <tr>
+      <td>Cost (Max.)</td>
+      <td>
+        <input type="text" name="maxCost" value="${maxCost}" />
+        ${errMaxCost}
+      </td>
+    </tr -->
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Search" />
+      </td>
+    </tr -->
+  </table>
+</form>
