@@ -13,6 +13,7 @@ function generateResultPage($condition) {
     if (count($result) == 0) {
       $t->addBlock("resultNoRow");
     } else {
+      $t->addBlock("shareResult");
       $wineHistList = $_SESSION['wineHistList'];
       foreach ($result as $record) {
         foreach ($record as $field) {
